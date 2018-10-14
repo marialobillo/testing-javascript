@@ -1,8 +1,13 @@
+const assert = require('assert')
+
 const { add } = require('./index')
 
 
-const result = add(5,6)
+const actual = add(5,6)
 
-if(result != 11){
-  throw new Error('The add function was not working well')
-}
+const expected = 11
+
+
+assert.equal(actual, expected)
+
+console.log('Successfully ran all tests!')
