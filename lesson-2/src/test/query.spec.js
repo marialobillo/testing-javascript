@@ -17,11 +17,21 @@ describe('The query function', function(){
         assert.deepEqual(actual, expectation);
     })
 
-    it('Should return an object: { number: 3} when ? number=3 is passed into it', () => {
+    it('Should return an object: { number: 3} when  number=3 is passed into it', () => {
 
-      assert.deepEqual(parse('?number=3'), {
+      assert.deepEqual(parse('number=3'), {
         number: 3
       })
+    })
+
+    it('eliminates all undefined and mull values', () => {
+      const queryObject = {
+        by: 'kati-frantz',
+        popular: undefined,
+        unanswered : null
+      }
+
+      assert.equal(stringify(queryObject), 'by=kati-frantz')
     })
   })
 })
