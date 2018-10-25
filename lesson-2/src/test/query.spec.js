@@ -16,15 +16,25 @@ describe('The query function', function(){
 
         assert.deepEqual(actual, expectation);
     })
+
+    it('Should return an object: { number: 3} when ? number=3 is passed into it', () => {
+
+      assert.deepEqual(parse('?number=3'), {
+        number: 3
+      })
+    })
   })
 })
 
 describe('The stringify function', () => {
 
   it('Should return a query string when an object is passed into it', () => {
-    const query = 'by=kati'
-    const actual = stringify(query)
-    const expectation = '0=b&1=y&2==&3=k&4=a&5=t&6=i'
+    const queryObject = {
+      by: 'kati-frantz',
+      sort: 'popular'
+    }
+    const actual = stringify(queryObject)
+    const expectation = 'by=kati-frantz&sort=popular'
     assert.equal(actual, expectation)
   })
 })
